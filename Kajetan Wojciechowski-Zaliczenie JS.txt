@@ -1,0 +1,128 @@
+//Zad.1
+class Lista {
+    constructor(data){
+        this.data = data; 
+        this.next = null; 
+    }
+
+    add(newElem){
+        if(this.next === null){
+            this.next = nowyElement; 
+        } else {
+            this.next.add(NowyElement); 
+        }
+    }
+}
+
+class LinkedList {
+    constructor(){
+        this.head = null; 
+    }
+
+    add(data){
+        if(this.head === null){
+            this.head = new Lista(data); 
+        } else {
+            this.head.add(new Lista(data)); 
+        }
+    }
+}
+//Zad.2
+class BST {
+    constructor() {
+        this.korzeń = null
+    }
+    wstaw(klucz) {
+        if(this.korzeń == null){
+            this.korzeń = {
+                klucz: klucz,
+                rodzic: null,
+                lewy: null,
+                prawy: null
+            }
+            return
+        }
+        let bieżący = this.korzeń
+        while(true) {
+            if(klucz < bieżący.klucz)
+                if(bieżący.lewy == null) {
+                    bieżący.lewy = {
+                        klucz: klucz,
+                        rodzic: bieżący,
+                        lewy: null,
+                        prawy: null
+                    }
+                    return
+                }
+                else
+                    bieżący = bieżący.lewy
+            else
+                if(bieżący.prawy == null) {
+                    bieżący.prawy = {
+                        klucz: klucz,
+                        rodzic: bieżący,
+                        lewy: null,
+                        prawy: null
+                    }
+                    return
+                }
+                else
+                    bieżący = bieżący.prawy
+        }
+    }
+}
+
+//Zad.3
+function Bombelsort(arr){
+     
+ for(var i = 0; i < arr.length; i++){
+     
+    
+   for(var j = 0; j < ( arr.length - i -1 ); j++){
+    
+     if(arr[j] < arr[j+1]){ 
+              
+       var temp = arr[j]
+
+       arr[j] = arr[j + 1]
+
+       arr[j+1] = temp
+     }
+   }
+ }
+
+ console.log(arr);
+}
+  
+var arr = [42,69,2137,85,1,9,1410,12];
+ 
+Bombelsort(arr);
+//Zad.4
+function Cudzysłówsprawdź(napis) {
+    let stos = []
+    for(let znak of napis)
+        if(znak == `"`)
+            if(stos[stos.length-1] == "dwa")
+                stos.pop()
+            else
+                stos.push("dwa")
+        else if(znak == `'`)
+            if(stos[stos.length-1] == "jeden")
+                stos.pop()
+            else
+                stos.push("jeden")
+        else if(znak == `|`)
+            if(stos[stos.length-1] == "prosta")
+                stos.pop()
+            else
+                stos.push("prosta")
+    if(stos[stos.length-1] == undefined){
+            console.log('Dobrze pozamykałeś cudzysłowy');
+            return
+    } 
+    else if(stos[stos.length-1] != undefined) {
+        
+        console.log('Pozamykałeś coś źle');
+        return 
+    }
+}
